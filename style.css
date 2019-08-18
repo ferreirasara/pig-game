@@ -32,6 +32,29 @@ body {
     text-align: center;
     background-color: #fff;
 }
+
+.rules {
+    display: none;
+    width: 83%;
+    height: 100%;
+    position: absolute;
+    background-color: #fff;
+    left: 17%;
+    color: black;
+}
+
+.rules-title {
+    text-align: center;
+    font-size: 40px;
+    padding: 25px;
+}
+
+.rules-content {
+    font-size: 20px;
+    padding: 25px;
+    line-height: 30px;
+}
+
 .menu {
     text-align: left;
     height: 100%;

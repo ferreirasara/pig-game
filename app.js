@@ -1,15 +1,7 @@
-/*
-GAME RULES:
+var dice, scores, roundScores, activePlayer, dice_colors, page_colors, i, current_color_dice, current_color_page, rules;
 
-- The game has 2 players, playing in rounds
-- In each turn, a player rolls a dice as many times as he whishes. Each result get added to his ROUND score
-- BUT, if the player rolls a 1, all his ROUND score gets lost. After that, it's the next player's turn
-- The player can choose to 'Hold', which means that his ROUND score gets added to his GLBAL score. After that, it's the next player's turn
-- The first player to reach 100 points on GLOBAL score wins the game
-
-*/
-
-var dice, scores, roundScores, activePlayer, dice_colors, page_colors, i, current_color_dice, current_color_page;
+current_color_dice = 'blue';
+current_color_page = '#38B6FF';
 
 init();
 
@@ -53,16 +45,26 @@ document.querySelector('.btn-new').addEventListener('click', function() {
 });
 
 document.querySelector('.btn-color').addEventListener('click', function() {
-    if (i < 6) {
+    if (i < 7) {
         current_color_dice = dice_colors[i];
         current_color_page = page_colors[i];
         changeColor();
-        i++;
     } else {
         i = 0;
         current_color_dice = dice_colors[i];
         current_color_page = page_colors[i];
         changeColor();
+    }
+    i++;
+});
+
+document.querySelector('.btn-rules').addEventListener('click', function() {
+    if (rules) {
+        rules = false;
+        document.querySelector('.rules').style.display = 'none';    
+    } else {
+        rules = true;
+        document.querySelector('.rules').style.display = 'block';
     }
 });
 
@@ -101,7 +103,6 @@ function init() {
     page_colors = ['#38B6FF', '#FF5757', '#7ED957', '#FFDE59', '#8C52FF', '#737373', '#FF66C4'];
     
     i = 1;
-    
-    current_color_dice = dice_colors[0];
-    current_color_page = page_colors[0];
+
+    rules = false;
 }
