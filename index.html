@@ -11,7 +11,7 @@
         <div class="container">
             <div class="menu">
                 <div class="title">PIG GAME</div>
-                <button class="btn-new"><i class="material-icons">refresh</i>New game</button>
+                <button class="btn-new" id="btn-new-menu"><i class="material-icons">refresh</i>New game</button>
                 <button class="btn-rules"><i class="material-icons">help</i>Rules</button>
                 <button class="btn-color"><i class="material-icons">format_color_fill</i>Color</button>
                 <button class="btn-scores"><i class="material-icons">poll</i>Top scores</button>
@@ -62,6 +62,16 @@
                     </ol>
                 </div>
             </div>
+        </div>
+        <div class="modal-login">
+        </div>
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h1>Choose Player Names</h1>
+            <input type="text" class="add-name-1" placeholder="Player 1">
+            <input type="text" class="add-name-2" placeholder="Player 2">
+            <input type="checkbox" class="pc-flag">Play against PC<br>
+            <button class="btn-new" id="btn-new-modal"><i class="material-icons">refresh</i>New game</button>
         </div>
         <script src="app.js"></script>
     </body>

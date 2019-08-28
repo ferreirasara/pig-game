@@ -1,4 +1,4 @@
-var dice, scores, roundScores, activePlayer, dice_colors, page_colors, i, current_color_dice, current_color_page, rules;
+var dice, scores, roundScores, activePlayer, dice_colors, page_colors, i, current_color_dice, current_color_page, rules, modal, player1, player2, playerPC;
 
 current_color_dice = 'blue';
 current_color_page = '#38B6FF';
@@ -36,12 +36,47 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
     }
 });
 
-document.querySelector('.btn-new').addEventListener('click', function() {
+function toggleModal() {
+    if (modal) {
+        modal = false;
+        document.querySelector('.modal-login').style.display = 'none';
+        document.querySelector('.modal-content').style.display = 'none';
+    } else {
+        modal = true;
+        document.querySelector('.modal-login').style.display = 'block';
+        document.querySelector('.modal-content').style.display = 'block';
+    }
+}
+
+document.querySelector(".close-button").addEventListener('click', toggleModal);
+document.getElementById('btn-new-menu').addEventListener('click', toggleModal);
+document.querySelector('.modal-login').addEventListener('click', toggleModal);
+document.querySelector('.pc-flag').addEventListener('click', function() {
+    if (document.querySelector('.pc-flag').checked) {
+        document.querySelector('.add-name-2').value = 'PC';
+        document.querySelector('.add-name-2').disabled = true;
+        playerPC = true;
+    } else {
+        document.querySelector('.add-name-2').disabled = false;
+        playerPC = false;
+    }
+});
+document.getElementById('btn-new-modal').addEventListener('click', function() {
+    player1 = document.querySelector('.add-name-1').value;
+    player2 = document.querySelector('.add-name-2').value;
+    if (player1 !== '' && player2 !== '') {
+        document.getElementById('name-0').textContent = player1;
+        document.getElementById('name-1').textContent = player2;
+    } else {
+        document.getElementById('name-0').textContent = 'Player 1';
+        document.getElementById('name-1').textContent = 'Player 2';
+    }
     if (activePlayer === 1) {
         document.querySelector('.player-1-panel').classList.toggle('active');
         document.querySelector('.player-0-panel').classList.toggle('active');
     }
-    init();    
+    toggleModal();
+    init();
 });
 
 document.querySelector('.btn-color').addEventListener('click', function() {
@@ -103,6 +138,7 @@ function init() {
     page_colors = ['#38B6FF', '#FF5757', '#7ED957', '#FFDE59', '#8C52FF', '#737373', '#FF66C4'];
     
     i = 1;
-
     rules = false;
+    modal = false;
+    playerPC = false;
 }
